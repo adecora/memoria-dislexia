@@ -1,0 +1,43 @@
+name: Compila y publica en Github Pages
+
+on:
+  push:
+    branches:
+      - master
+  
+  workflow_dispatch: # Permite ejecutar el flujo de forma manual
+
+jobs:
+  build:
+    # Setea los permisos del GITHUB_TOKEN para poder publicar en GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout al codigo
+        uses: actions/checkout@v4
+
+      - name: Setup de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '19.6.0'
+          cache: 'yarn'
+      
+      - name: Compila el proyecto
+        run: yarn build
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build'
+       
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 

@@ -1,0 +1,51 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+header {
+  height: var(--img-background-size);
+}
+
+.heroBanner {
+  height: calc(100vh - var(--ifm-navbar-height) - var(--img-background-size));
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.container--tY {
+  transform: translateY(-35%);
+}
+
+.avatar__photo--xxl {
+  --ifm-avatar-photo-size: 9rem;
+}
+
+@media screen and (max-width: 550px) {
+  .container--tY {
+    transform: unset;
+  }
+
+  .avatar__photo--xxl {
+    --ifm-avatar-photo-size: 6rem;
+  }
+}
+
+.avatar__name--pt {
+  padding-top: 0.5rem;
+}
+
+.hideSubtitle {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .hideSubtitle {
+  color: #1b1b1d;
+}

@@ -27,6 +27,9 @@ jobs:
           node-version: '19.6.0'
           cache: 'yarn'
       
+      - name: Instala als dependencias
+        run: yarn install --frozen-lockfile
+      
       - name: Compila el proyecto
         run: yarn build
       
